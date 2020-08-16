@@ -440,3 +440,18 @@ txn, err = store.Begin()
 ...
 ```
 
+Q 为什么会持续启动事务
+不会调试golang程序用一个panic在命令行得到如下的输出
+```
+[2020/08/17 00:34:49.077 +08:00] [ERROR] [misc.go:114] ["panic in the recoverable goroutine"] [label=ddl-worker] [funcInfo="DDL ID 7e6be43d-6177-4d20-9e5e-662a95163e6d, worker 1, tp general start"] [r="\"panic transaction\""] [stack="goroutine 144 [running]:\ngithub.com/pingcap/tidb/util.GetStack(...)\n\t/Users/conor/go/src/tidb/util/misc.go:75\ngithub.com/pingcap/tidb/util.Recover(0x60abdfb, 0xa, 0xc00005c0f0, 0x47, 0x0, 0xc000057c01)\n\t/Users/conor/go/src/tidb/util/misc.go:118 +0x2fb\npanic(0x5c3d700, 0x6584b20)\n\t/Users/conor/go/go1.13.11/src/runtime/panic.go:679 +0x1b2\ngithub.com/pingcap/tidb/kv.RunInNewTxn(0x6646440, 0xc00035e400, 0x0, 0xc001151c80, 0x4, 0x8)\n\t/Users/conor/go/src/tidb/kv/txn.go:43 +0xd53\ngithub.com/pingcap/tidb/ddl.(*worker).handleDDLJobQueue(0xc00065f440, 0xc00025ac80, 0x24, 0xc001300080)\n\t/Users/conor/go/src/tidb/ddl/ddl_worker.go:434 +0x13f\ngithub.com/pingcap/tidb/ddl.(*worker).start(0xc00065f440, 0xc00025ac80)\n\t/Users/conor/go/src/tidb/ddl/ddl_worker.go:155 +0x36e\ncreated by github.com/pingcap/tidb/ddl.(*ddl).Start\n\t/Users/conor/go/src/tidb/ddl/ddl.go:338 +0x670\n"]
+```
+ddl.go line315   
+`func (d *ddl) Start(ctxPool *pools.ResourcePool) error `  
+`go w.start(d.ddlCtx)`  
+ddl_worker.go line 129  
+`func (w *worker) start(d *ddlCtx)`  
+`err := w.handleDDLJobQueue(d)`  
+ddl_worker.go line 420   
+`func (w *worker) handleDDLJobQueue(d *ddlCtx) error `   
+`err := kv.RunInNewTxn(d.store, false, func(txn kv.Transaction) error `  
+go routine 启动了然后有个两层for循环在不停的RunInNewTxn  
