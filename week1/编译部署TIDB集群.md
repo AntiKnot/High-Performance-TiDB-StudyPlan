@@ -112,8 +112,8 @@ make
 ```
 成功
 
-**Thu Aug 13 03:26:19 CST 2020**
-Q 编译tikv
+**Thu Aug 13 03:26:19 CST 2020**  
+Q 编译tikv  
 tikv是rust的 要上clion
 ```
 info: component 'rustfmt' for target 'x86_64-apple-darwin' is up to date
@@ -121,8 +121,8 @@ info: component 'rustfmt' for target 'x86_64-apple-darwin' is up to date
 在macos下不知道能不能正常编译
 
 
-**Thu Aug 13 03:43:09 CST 2020**
-Q warning
+**Thu Aug 13 03:43:09 CST 2020**  
+Q warning  
 ```rust
 warning: variable does not need to be mutable
    --> src/server/gc_worker/applied_lock_collector.rs:138:13
