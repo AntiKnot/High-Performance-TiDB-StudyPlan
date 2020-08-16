@@ -1,15 +1,15 @@
 以下记录按照timeline进行，记录完整homework的过程和遇到的问题。
 
-**Q 交代一下开发环境和编译的目标版本**	
-_Thu Aug 13 02:09:01 CST 2020_	
-OS macOS Catalina v10.15.5	
-Goland 编译TiDB PD	
-Clion 用来编译TiKV	
-DataGrip 作为sql client	
-GolangSDK version v1.13.11	
-tidb release-v4.0.4	
-tikv release-v4.0	
-pd   release v4.0	
+**Q 交代一下开发环境和编译的目标版本**	  
+_Thu Aug 13 02:09:01 CST 2020_	  
+OS macOS Catalina v10.15.5	  
+Goland 编译TiDB PD	  
+Clion 用来编译TiKV	  
+DataGrip 作为sql client	  
+GolangSDK version v1.13.11	  
+tidb release-v4.0.4	  
+tikv release-v4.0	  
+pd   release v4.0	  
 
 **Q 直接寻找可重现的文档**	
 _hu Aug 13 02:12:17 CST 2020_	
