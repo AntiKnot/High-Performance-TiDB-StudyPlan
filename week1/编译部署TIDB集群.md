@@ -36,13 +36,13 @@ IdeaVim 官方Vim
 Makefile support  
 WakaTime 统计编程时间  
 
-**如何编译**. 
-_Thu Aug 13 02:28:04 CST 2020_
-x因为不知道goland的ToolsChain
-这里去看看github的ReadME和wiki有没有什么说法
-答案是没有 
-那就直接makefile里面的default试试
-毕竟
+**如何编译**  
+_Thu Aug 13 02:28:04 CST 2020_  
+x因为不知道goland的ToolsChain  
+这里去看看github的ReadME和wiki有没有什么说法  
+答案是没有   
+那就直接makefile里面的default试试  
+毕竟  
 ```
 	@echo Build TiDB Server successfully!
 ```
