@@ -11,34 +11,34 @@ tidb release-v4.0.4
 tikv release-v4.0	  
 pd   release v4.0	  
 
-**Q 直接寻找可重现的文档**	  
-_hu Aug 13 02:12:17 CST 2020_	
-网上可以找到可以tidb编译的相关资料	
-TiDB - 如何在国内编译 	
-https://my.oschina.net/tzj/blog/2875585 	
-PingCap社区文章 q=编译	
-https://docs.pingcap.com/zh/search/?lang=zh&type=tidb&version=v4.0&q=%E7%BC%96%E8%AF%91 	
-如何在没有代理的情况下编译 tidb server	
-https://www.cnblogs.com/lijingshanxi/p/10890232.html	
+**Q 直接寻找可重现的文档**  
+_hu Aug 13 02:12:17 CST 2020_  	
+网上可以找到可以tidb编译的相关资料  
+TiDB - 如何在国内编译 	  
+https://my.oschina.net/tzj/blog/2875585  
+PingCap社区文章 q=编译  
+https://docs.pingcap.com/zh/search/?lang=zh&type=tidb&version=v4.0&q=%E7%BC%96%E8%AF%91   
+如何在没有代理的情况下编译 tidb server  
+https://www.cnblogs.com/lijingshanxi/p/10890232.html  
 
-**Q 尝试下载代码**	
-_Thu Aug 13 02:12:50 CST 2020_	
+**Q 尝试下载代码**  
+_Thu Aug 13 02:12:50 CST 2020_  
 ```
 $ du -sh tidb-4.0.4
   33M	tidb-4.0.4
 ```
-代码大小25M 
+代码大小25M   
 
-**Q goland plugins**	
-_Thu Aug 13 02:24:49 CST 2020_	
-GoYacc 用来格式化yacc文件	
-IdeaVim 官方Vim	
-Makefile support	
-WakaTime 统计编程时间	
+**Q goland plugins**  
+_Thu Aug 13 02:24:49 CST 2020_	  
+GoYacc 用来格式化yacc文件  
+IdeaVim 官方Vim  
+Makefile support  
+WakaTime 统计编程时间  
 
-**Thu Aug 13 02:28:04 CST 2020**
-Q 如何编译
-因为不知道goland的ToolsChain
+**如何编译**. 
+_Thu Aug 13 02:28:04 CST 2020_
+x因为不知道goland的ToolsChain
 这里去看看github的ReadME和wiki有没有什么说法
 答案是没有 
 那就直接makefile里面的default试试
@@ -51,16 +51,16 @@ Q 如何编译
 
 CGO_ENABLED=1 GO111MODULE=on go build  -tags codes  -ldflags '-X "github.com/pingcap/parser/mysql.TiDBReleaseVersion=" -X "github.com/pingcap/tidb/util/versioninfo.TiDBBuildTS=2020-08-12 06:44:55" -X "github.com/pingcap/tidb/util/versioninfo.TiDBGitHash=" -X "github.com/pingcap/tidb/util/versioninfo.TiDBGitBranch=" -X "github.com/pingcap/tidb/util/versioninfo.TiDBEdition=Community" ' -o bin/tidb-server tidb-server/main.go
 ```
-makefilelog termianl是茫茫多的日志拉下来很多的依赖
-应该是和我不用golang开发有关系
-因为这里面有一些
+makefilelog termianl是茫茫多的日志拉下来很多的依赖. 
+应该是和我不用golang开发有关系. 
+因为这里面有一些. 
 ```
 go: finding google.golang.org/api v0.7.0
 ```
-所以需要代理不然有些依赖可能获取不到。  
+所以需要代理不然有些依赖可能获取不到。   
 
-**Thu Aug 13 02:52:32 CST 2020**
-Q 在这个地方卡住了
+**Q 在这个地方卡住了**
+_Thu Aug 13 02:52:32 CST 2020_  
 ```
 go: github.com/pingcap/tidb@v1.1.0-beta.0.20200715100003-b4da443a3c4c: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /Users/conor/go/pkg/mod/cache/vcs/023ec28de881fe16123b69e600d28e8671b1fa6b70863a0d65ca08ea4bcc7d6d: exit status 128:
 	error: RPC failed; curl 18 transfer closed with outstanding read data remaining
@@ -70,40 +70,40 @@ go: github.com/pingcap/tidb@v1.1.0-beta.0.20200715100003-b4da443a3c4c: git fetch
 go: error loading module requirements
 make: *** [server] Error 1
 ```
-keywors:
+keywors:  
 ```
 error: RPC failed; curl 18 transfer closed with outstanding read data remaining
 ```
 "git clone时RPC failed; curl 18 transfer closed with outstanding read data remaining"
-https://www.cnblogs.com/zjfjava/p/10392150.html
+https://www.cnblogs.com/zjfjava/p/10392150.html   
 ```
 $ git config http.postBuffer 524288000
 fatal: not in a git directory
 ```
-这里比较尴尬，我用的源码不是从指定的commit上clone下来的，
-那无git的源码就不能直接make了吗。
+这里比较尴尬，我用的源码不是从指定的commit上clone下来的，  
+那无git的源码就不能直接make了吗。  
 
-**Thu Aug 13 03:00:18 CST 2020**
-Q 删除源码使用git的
+**Q 删除源码使用git的**. 
+_Thu Aug 13 03:00:18 CST 2020_  
 https://github.com/pingcap/tidb/tree/release-4.0.4
 ```
 git clone https://github.com/pingcap/tidb.git
 git checkout release-4.0.4
 ```
-然而还是卡在
+然而还是卡在  
 ```
 go: finding github.com/pingcap/tidb v1.1.0-beta.0.20200715100003-b4da443a3c4c
 ```
-直接make
+直接make  
 ```
 make
 ```
-原来goland在不配置的情况下不走代理。甚至不走termianl的代理。
-在Pycharm/Perference/搜索Proxy
-配饰manual_paoxy
+原来goland在不配置的情况下不走代理。甚至不走termianl的代理。  
+在Pycharm/Perference/搜索Proxy  
+配饰manual_paoxy  
 
-**Thu Aug 13 03:21:17 CST 2020**
-Q 编译pd
+**Q 编译pd**  
+_Thu Aug 13 03:21:17 CST 2020_  
 ```
 git clone https://github.com/pingcap/pd.git
 cd pd
