@@ -1,3 +1,49 @@
+## 基本步骤  
+### 获取源码   
+```
+# make dir
+mkdir ti-src 
+mkdir ti-bin
+cd ti-src
+# git clone
+git clone -b v4.0.4 https://github.com/pingcap/tidb.git
+git clone -b v4.0.4 https://github.com/pingcap/pd.git
+git clone -b v4.0.4 https://github.com/tikv/tikv.git
+```
+### 修改TIDB代码  
+```go
+// file: /kv/txn.go
+	for i := uint(0); i < maxRetryCnt; i++ {
+		logutil.BgLogger().Info("hello transaction")  // here
+		txn, err = store.Begin()
+
+```
+### 本地编译  
+```
+# change dir name 
+//change dir name tidb, pd, tikv
+# cd tidb pd tikv
+cd tidb
+make
+//...
+cd pd
+make
+//...
+cd tikv
+make
+//...
+```
+### 使用Tiup构建集群  
+```
+cd ti-bin
+cp ~/ti-src/tidb/bin/tidb-server .
+cp ~/ti-src/tikv/bin/tikv-server .
+cp ~/ti-src/pd/bin/pd-server . 
+tiup playground --db.binpath ~/ti-bin/tidb-server  --pd.binpath ~/ti-bin/pd-server --kv.binpath ~/ti-bin/tikv-server --db 1 --pd 1 --kv 3
+```
+
+
+
 以下记录按照timeline进行，记录完整homework的过程和遇到的问题。
 
 **Q 交代一下开发环境和编译的目标版本**	  
