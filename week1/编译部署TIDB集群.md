@@ -1,7 +1,7 @@
 以下记录按照timeline进行，记录完整homework的过程和遇到的问题。
 
-**Thu Aug 13 02:09:01 CST 2020**
-Q 交代一下开发环境和编译的目标版本
+**Q 交代一下开发环境和编译的目标版本**
+_Thu Aug 13 02:09:01 CST 2020_
 OS macOS Catalina v10.15.5
 Goland 编译TiDB PD
 Clion 用来编译TiKV
@@ -11,8 +11,8 @@ tidb release-v4.0.4
 tikv release-v4.0
 pd   release v4.0
 
-**hu Aug 13 02:12:17 CST 2020**
-Q 直接寻找可重现的文档
+**Q 直接寻找可重现的文档**
+_hu Aug 13 02:12:17 CST 2020_
 网上可以找到可以tidb编译的相关资料
 TiDB - 如何在国内编译 
 https://my.oschina.net/tzj/blog/2875585 
@@ -21,8 +21,8 @@ https://docs.pingcap.com/zh/search/?lang=zh&type=tidb&version=v4.0&q=%E7%BC%96%E
 如何在没有代理的情况下编译 tidb server
 https://www.cnblogs.com/lijingshanxi/p/10890232.html
 
-**Thu Aug 13 02:12:50 CST 2020**
-Q 尝试下载代码
+**Q 尝试下载代码**
+_Thu Aug 13 02:12:50 CST 2020_
 ```
 $ du -sh tidb-4.0.4
   33M	tidb-4.0.4
