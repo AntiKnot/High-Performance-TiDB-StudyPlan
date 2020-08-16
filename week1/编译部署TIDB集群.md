@@ -83,7 +83,7 @@ fatal: not in a git directory
 这里比较尴尬，我用的源码不是从指定的commit上clone下来的，  
 那无git的源码就不能直接make了吗。  
 
-**Q 删除源码使用git的**. 
+**Q 删除源码使用git的**  
 _Thu Aug 13 03:00:18 CST 2020_  
 https://github.com/pingcap/tidb/tree/release-4.0.4
 ```
@@ -102,7 +102,7 @@ make
 在Pycharm/Perference/搜索Proxy  
 配饰manual_paoxy  
 
-**Q 编译pd**  
+**Q 编译pd**    
 _Thu Aug 13 03:21:17 CST 2020_  
 ```
 git clone https://github.com/pingcap/pd.git
@@ -141,13 +141,12 @@ warning: variable does not need to be mutable
         #[allow(unused_mut)]
         let mut send_fp = || {
 ```
-
+**Q 编译成功**  
 **Thu Aug 13 03:53:46 CST 2020**
-Q 编译成功
 不过我用的 all 参数这里在进行测试
 
+**Q pd是做什么的**  
 **Thu Aug 13 03:54:25 CST 2020**
-Q pd是做什么的
 >PD是Placement Driver的缩写。它用于管理和调度TiKV集群。 PD通过嵌入etcd支持分布和容错。
 
 **Thu Aug 13 04:15:36 CST 2020**
@@ -155,11 +154,11 @@ Q 测试不通过
 有很多测试 没有通过。不过目标是“启动事物事务log写一段”
 先尝试搭建集群
 
-**Thu Aug 13 04:23:18 CST 2020**
-Q 如何run起来服务，如何构建集群
+**Q 如何run起来服务，如何构建集群**
+_Thu Aug 13 04:23:18 CST 2020_  
 
-**Thu Aug 13 11:34:44 CST 2020**
-Q 怎么算自己搭建
+**Q 怎么算自己搭建**    
+_Thu Aug 13 11:34:44 CST 2020_
 可以使用官方的几个工具嘛。
 然后发现了这个
 https://docs.pingcap.com/zh/tidb/dev/tiup-playground
@@ -176,15 +175,15 @@ Flags:
       --host string              设置每个组件的监听地址（默认为 127.0.0.1），如果要提供给别的电脑访问，可设置为 0.0.0.0
       --kv int                   设置集群中的 TiKV 数量（默认为1）
       --kv.binpath string        指定 TiKV 二进制文件的位置（开发调试用，可忽略）
-      --kv.config string         指定 TiKV 的配置文件（开发调试用，可忽略）
-      --monitor                  是否启动监控
+        --kv.config string         指定 TiKV 的配置文件（开发调试用，可忽略）
+        --monitor                  是否启动监控
       --pd int                   设置集群中的 PD 数量（默认为1）
       --pd.binpath string        指定 PD 二进制文件的位置（开发调试用，可忽略）
       --pd.config string         指定 PD 的配置文件（开发调试用，可忽略）
-      --pump int                 指定集群中 Pump 的数量（非 0 的时候 TiDB 会开启 TiDB Binlog）
-      --pump.binpath string      指定 Pump 二进制文件的位置（开发调试用，可忽略）
+        --pump int                 指定集群中 Pump 的数量（非 0 的时候 TiDB 会开启 TiDB Binlog）
+        --pump.binpath string      指定 Pump 二进制文件的位置（开发调试用，可忽略）
       --pump.config string       指定 Pump 的配置文件（开发调试用，可忽略）
-      --tiflash int              设置集群中 TiFlash 数量（默认为0）
+    --tiflash int              设置集群中 TiFlash 数量（默认为0）
       --tiflash.binpath string   指定 TiFlash 的二进制文件位置（开发调试用，可忽略）
       --tiflash.config string    指定 TiFlash 的配置文件（开发调试用，可忽略）
 ```
@@ -192,12 +191,11 @@ Flags:
 ```
       --db.binpath string        指定 TiDB 二进制文件的位置（开发调试用，可忽略）
       --pd.binpath string        指定 PD 二进制文件的位置（开发调试用，可忽略）
-      --kv.binpath string        指定 TiKV 二进制文件的位置（开发调试用，可忽略）
+    --kv.binpath string        指定 TiKV 二进制文件的位置（开发调试用，可忽略）
 ```
 
-
-**Thu Aug 13 12:51:16 CST 2020**
-Q 安装tiup
+**Q 安装tiup**  
+  _Thu Aug 13 12:51:16 CST 2020_
 官方github
 https://github.com/pingcap/tiup
 ```
@@ -206,9 +204,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh
 安装后会有常见的环境变量的问题，在~/.profile ~/.zshrc里面配置一下，
 source或者重启一个termianl
 
-
-**Thu Aug 13 13:01:05 CST 2020**
-Q 已经配置了路径但是执行命令的时候 应该是没有找到二进制文件的意思
+**Q 已经配置了路径但是执行命令的时候 应该是没有找到二进制文件的意思**
+_Thu Aug 13 13:01:05 CST 2020_
 ```
 The component `tidb` is not installed; downloading from repository.
 ```
@@ -256,25 +253,21 @@ To view the Grafana: http://127.0.0.1:3000
 不过目的应该是能够对上面3个工具进行编译开发，相比这里应该没有问题。
 其实官方这里推荐的也是试用 Cluster Platground 和 Ansible是三种部署方式
 
-**Thu Aug 13 13:18:49 CST 2020**
-Q这里默认的dashboard用户密码是什么， 
-emmm 直接signin就可以了
-ps dashboard的账号是root密码空 Grafana的账号admin密码admin
+**Q这里默认的dashboard用户密码是什么**
+_Thu Aug 13 13:18:49 CST 2020_
+emmm 直接signin就可以了    
+ps dashboard的账号是root密码空 Grafana的账号admin密码admin    
+左侧cluster info 可以查看集群节点信息，  
+看Deployment Directory应该是没有问题  
+TiFlash挂了 先继续有问题再来启动，再不行就也编译一个本地的  
 
-**Thu Aug 13 13:20:14 CST 2020**
-Q 左侧cluster info 可以查看集群节点信息，
-看Deployment Directory应该是没有问题 
-TiFlash挂了 先继续有问题再来启动，再不行就也编译一个本地的
-
-**Thu Aug 13 13:22:54 CST 2020**
-Q 尝试链接
+**尝试链接**
+_Thu Aug 13 13:22:54 CST 2020_
 mysql --host 127.0.0.1 --port 4000 -u root
 这里用的是JB家的DataGrip
 
-**Thu Aug 13 13:29:48 CST 2020**
-Q 尝试查询 创建表 创建事务
-
-
+**Q 尝试查询 创建表 创建事务**
+_Thu Aug 13 13:29:48 CST 2020_
 ```
 [2020-08-13 13:34:22] Connected
 > create database tidemo
@@ -298,12 +291,11 @@ tidemo> CREATE TABLE IF NOT EXISTS tbl(
 [2020-08-13 13:37:37] completed in 133 ms
 ```
 
-**Thu Aug 13 14:11:45 CST 2020**
-Q 看看资料 修改哪里可以在想要的位置出发打印消息
 
 
-**Sun Aug 16 10:59:10 CST 2020**
-Q 事务的起点在哪里
+
+**Q 事务的起点在哪里**
+_Sun Aug 16 10:59:10 CST 2020_
 全局搜索transaction并且限定*.go文件
 可以找到方法
 ```
@@ -340,49 +332,48 @@ type Transaction interface {
 	// GetSnapshot returns the Snapshot binding to this transaction.
 	GetSnapshot() Snapshot
 	// SetVars sets variables to the transaction.
-	SetVars(vars *Variables)
+  	SetVars(vars *Variables)
 	// GetVars gets variables from the transaction.
 	GetVars() *Variables
 	// BatchGet gets kv from the memory buffer of statement and transaction, and the kv storage.
 	// Do not use len(value) == 0 or value == nil to represent non-exist.
 	// If a key doesn't exist, there shouldn't be any corresponding entry in the result map.
 	BatchGet(ctx context.Context, keys []Key) (map[string][]byte, error)
-	IsPessimistic() bool
-}
-```
-里面有常见的`SetVars`,`commit`,`rollback` ，那么begin哪里去了。
-
-
-_Sun Aug 16 11:02:59 CST 2020_
-**Q 事物的Begin方法在哪里。**
-全局搜索Begin() MatchCase *.go
-```
-// Storage defines the interface for storage.
-// Isolation should be at least SI(SNAPSHOT ISOLATION)
-type Storage interface {
-	// Begin transaction
-	Begin() (Transaction, error)
+  	IsPessimistic() bool
+  }
+  ```
+  里面有常见的`SetVars`,`commit`,`rollback` ，那么begin哪里去了。
+  
+  **Q 事物的Begin方法在哪里。**
+  _Sun Aug 16 11:02:59 CST 2020_
+  全局搜索Begin() MatchCase *.go
+  ```
+  // Storage defines the interface for storage.
+  // Isolation should be at least SI(SNAPSHOT ISOLATION)
+  type Storage interface {
+  	// Begin transaction
+  	Begin() (Transaction, error)
 	// BeginWithStartTS begins transaction with startTS.
-	BeginWithStartTS(startTS uint64) (Transaction, error)
-	// GetSnapshot gets a snapshot that is able to read any data which data is <= ver.
-	// if ver is MaxVersion or > current max committed version, we will use current version for this snapshot.
-	GetSnapshot(ver Version) (Snapshot, error)
-	// GetClient gets a client instance.
-	GetClient() Client
-	// Close store
-	Close() error
-	// UUID return a unique ID which represents a Storage.
+  	BeginWithStartTS(startTS uint64) (Transaction, error)
+  	// GetSnapshot gets a snapshot that is able to read any data which data is <= ver.
+  	// if ver is MaxVersion or > current max committed version, we will use current version for this snapshot.
+  	GetSnapshot(ver Version) (Snapshot, error)
+  	// GetClient gets a client instance.
+  	GetClient() Client
+  	// Close store
+  	Close() error
+  	// UUID return a unique ID which represents a Storage.
 	UUID() string
-	// CurrentVersion returns current max committed version.
-	CurrentVersion() (Version, error)
+  	// CurrentVersion returns current max committed version.
+  	CurrentVersion() (Version, error)
 	// GetOracle gets a timestamp oracle client.
-	GetOracle() oracle.Oracle
-	// SupportDeleteRange gets the storage support delete range or not.
-	SupportDeleteRange() (supported bool)
-	// Name gets the name of the storage engine
-	Name() string
-	// Describe returns of brief introduction of the storage
-	Describe() string
+  	GetOracle() oracle.Oracle
+  	// SupportDeleteRange gets the storage support delete range or not.
+  	SupportDeleteRange() (supported bool)
+  	// Name gets the name of the storage engine
+  	Name() string
+  	// Describe returns of brief introduction of the storage
+  	Describe() string
 	// ShowStatus returns the specified status of the storage
 	ShowStatus(ctx context.Context, key string) (interface{}, error)
 }
@@ -391,8 +382,9 @@ Ok, 这个叫Stage中有一个可以返回Transaction的Begin(), 这里居然是
 原因我也不知道。
 
 
-_Sun Aug 16 11:10:48 CST 2020_
 **Q 加入需要输出的“hello transaction”**
+_Sun Aug 16 11:10:48 CST 2020_
+
 ```
 #file kv/txn.go 		
 txn, err = store.Begin()
@@ -402,3 +394,4 @@ txn, err = store.Begin()
 [2020/08/16 15:37:22.304 +08:00] [INFO] [txn.go:37] ["hello transaction"]
 ...
 ```
+
