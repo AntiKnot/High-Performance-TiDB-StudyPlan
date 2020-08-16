@@ -11,7 +11,7 @@ tidb release-v4.0.4
 tikv release-v4.0	  
 pd   release v4.0	  
 
-**Q 直接寻找可重现的文档**	
+**Q 直接寻找可重现的文档**	  
 _hu Aug 13 02:12:17 CST 2020_	
 网上可以找到可以tidb编译的相关资料	
 TiDB - 如何在国内编译 	
