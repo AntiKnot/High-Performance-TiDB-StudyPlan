@@ -112,9 +112,9 @@ make
 ```
 成功
 
-**Thu Aug 13 03:26:19 CST 2020**
-Q 编译tikv
-tikv是rust的 要上clion
+**Q 编译tikv**   
+_Thu Aug 13 03:26:19 CST 2020_  
+tikv是rust的 要上clion  
 ```
 info: component 'rustfmt' for target 'x86_64-apple-darwin' is up to date
 ```
