@@ -120,9 +120,8 @@ info: component 'rustfmt' for target 'x86_64-apple-darwin' is up to date
 ```
 在macos下不知道能不能正常编译
 
-
-**Thu Aug 13 03:43:09 CST 2020**  
-Q warning  
+**Q warning**  
+_Thu Aug 13 03:43:09 CST 2020_  
 ```rust
 warning: variable does not need to be mutable
    --> src/server/gc_worker/applied_lock_collector.rs:138:13
@@ -195,7 +194,7 @@ Flags:
 ```
 
 **Q 安装tiup**  
-  _Thu Aug 13 12:51:16 CST 2020_  
+_Thu Aug 13 12:51:16 CST 2020_  
 官方github  
 https://github.com/pingcap/tiup
 ```
