@@ -112,8 +112,8 @@ make
 ```
 成功
 
-**Thu Aug 13 03:26:19 CST 2020**  
-Q 编译tikv  
+**Thu Aug 13 03:26:19 CST 2020**
+Q 编译tikv
 tikv是rust的 要上clion
 ```
 info: component 'rustfmt' for target 'x86_64-apple-darwin' is up to date
@@ -141,24 +141,24 @@ warning: variable does not need to be mutable
         #[allow(unused_mut)]
         let mut send_fp = || {
 ```
-**Q 编译成功**  
-**Thu Aug 13 03:53:46 CST 2020**
+**Q 编译成功**    
+_Thu Aug 13 03:53:46 CST 2020_  
 不过我用的 all 参数这里在进行测试
 
-**Q pd是做什么的**  
-**Thu Aug 13 03:54:25 CST 2020**
+**Q pd是做什么的**    
+_Thu Aug 13 03:54:25 CST 2020_  
 >PD是Placement Driver的缩写。它用于管理和调度TiKV集群。 PD通过嵌入etcd支持分布和容错。
 
-**Thu Aug 13 04:15:36 CST 2020**
-Q 测试不通过
+**Q 测试不通过**  
+_Thu Aug 13 04:15:36 CST 2020_    
 有很多测试 没有通过。不过目标是“启动事物事务log写一段”
 先尝试搭建集群
 
-**Q 如何run起来服务，如何构建集群**
-_Thu Aug 13 04:23:18 CST 2020_  
+**Q 如何run起来服务，如何构建集群**  
+_Thu Aug 13 04:23:18 CST 2020_    
 
-**Q 怎么算自己搭建**    
-_Thu Aug 13 11:34:44 CST 2020_
+**Q 怎么算自己搭建**      
+_Thu Aug 13 11:34:44 CST 2020_  
 可以使用官方的几个工具嘛。
 然后发现了这个
 https://docs.pingcap.com/zh/tidb/dev/tiup-playground
@@ -195,8 +195,8 @@ Flags:
 ```
 
 **Q 安装tiup**  
-  _Thu Aug 13 12:51:16 CST 2020_
-官方github
+  _Thu Aug 13 12:51:16 CST 2020_  
+官方github  
 https://github.com/pingcap/tiup
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | shs
@@ -204,12 +204,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh
 安装后会有常见的环境变量的问题，在~/.profile ~/.zshrc里面配置一下，
 source或者重启一个termianl
 
-**Q 已经配置了路径但是执行命令的时候 应该是没有找到二进制文件的意思**
-_Thu Aug 13 13:01:05 CST 2020_
+**Q 已经配置了路径但是执行命令的时候 应该是没有找到二进制文件的意思**  
+_Thu Aug 13 13:01:05 CST 2020_  
 ```
 The component `tidb` is not installed; downloading from repository.
 ```
-手动测试三组服务，可以启动
+手动测试三组服务，可以启动  
 ```
 ./pd-server
 ./tidb-server
@@ -217,9 +217,9 @@ The component `tidb` is not installed; downloading from repository.
 ```
 >默认启动 playground 时，各个组件都是使用官方镜像组件包中的二进制文件启动的，如果本地编译了一个临时的二进制文件想要放入集群中测试，可以使用 --{comp}.binpath 这个参数替换，例如执行以下命令替换 TiDB 的二进制文件：
 >```
->tiup playground --db.binpath /xx/tidb-server
+>tiup playground --db.binpath /xx/tidb-server  
 
-指定启动二进制文件目录，指定集群内节点数量
+指定启动二进制文件目录，指定集群内节点数量  
 ```
 tiup playground --db.binpath /Users/conor/go/src/cluster/tidb-server  --pd.binpath /Users/conor/go/src/cluster/pd-server --kv.binpath /Users/conor/go/src/cluster/tikv-server --db 1 --pd 1 --kv 3
 Starting component `playground`: /Users/conor/.tiup/components/playground/v1.0.9/tiup-playground --db.binpath /Users/conor/go/src/cluster/tidb-server --pd.binpath /Users/conor/go/src/cluster/pd-server --kv.binpath /Users/conor/go/src/cluster/tikv-server --db 1 --pd 1 --kv 3
@@ -253,21 +253,21 @@ To view the Grafana: http://127.0.0.1:3000
 不过目的应该是能够对上面3个工具进行编译开发，相比这里应该没有问题。
 其实官方这里推荐的也是试用 Cluster Platground 和 Ansible是三种部署方式
 
-**Q这里默认的dashboard用户密码是什么**
-_Thu Aug 13 13:18:49 CST 2020_
+**Q这里默认的dashboard用户密码是什么**  
+_Thu Aug 13 13:18:49 CST 2020_  
 emmm 直接signin就可以了    
 ps dashboard的账号是root密码空 Grafana的账号admin密码admin    
 左侧cluster info 可以查看集群节点信息，  
 看Deployment Directory应该是没有问题  
 TiFlash挂了 先继续有问题再来启动，再不行就也编译一个本地的  
 
-**尝试链接**
-_Thu Aug 13 13:22:54 CST 2020_
+**尝试链接**  
+_Thu Aug 13 13:22:54 CST 2020_  
 mysql --host 127.0.0.1 --port 4000 -u root
 这里用的是JB家的DataGrip
 
-**Q 尝试查询 创建表 创建事务**
-_Thu Aug 13 13:29:48 CST 2020_
+**Q 尝试查询 创建表 创建事务**  
+_Thu Aug 13 13:29:48 CST 2020_  
 ```
 [2020-08-13 13:34:22] Connected
 > create database tidemo
@@ -294,10 +294,10 @@ tidemo> CREATE TABLE IF NOT EXISTS tbl(
 
 
 
-**Q 事务的起点在哪里**
-_Sun Aug 16 10:59:10 CST 2020_
-全局搜索transaction并且限定*.go文件
-可以找到方法
+**Q 事务的起点在哪里**  
+_Sun Aug 16 10:59:10 CST 2020_  
+全局搜索transaction并且限定*.go文件  
+可以找到方法  
 ```
 func RunInNewTxn(store Storage, retryable bool, f func(txn Transaction) error) error {
 ```
@@ -344,9 +344,9 @@ type Transaction interface {
   ```
   里面有常见的`SetVars`,`commit`,`rollback` ，那么begin哪里去了。
   
-  **Q 事物的Begin方法在哪里。**
-  _Sun Aug 16 11:02:59 CST 2020_
-  全局搜索Begin() MatchCase *.go
+  **Q 事物的Begin方法在哪里。**  
+  _Sun Aug 16 11:02:59 CST 2020_  
+  全局搜索Begin() MatchCase *.go  
   ```
   // Storage defines the interface for storage.
   // Isolation should be at least SI(SNAPSHOT ISOLATION)
@@ -378,12 +378,12 @@ type Transaction interface {
 	ShowStatus(ctx context.Context, key string) (interface{}, error)
 }
 ```
-Ok, 这个叫Stage中有一个可以返回Transaction的Begin(), 这里居然是拆开写的
-原因我也不知道。
+Ok, 这个叫Stage中有一个可以返回Transaction的Begin(), 这里居然是拆开写的  
+原因我也不知道。  
 
 
-**Q 加入需要输出的“hello transaction”**
-_Sun Aug 16 11:10:48 CST 2020_
+**Q 加入需要输出的“hello transaction”**  
+_Sun Aug 16 11:10:48 CST 2020_  
 
 ```
 #file kv/txn.go 		
