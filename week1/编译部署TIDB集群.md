@@ -1,6 +1,6 @@
 以下记录按照timeline进行，记录完整homework的过程和遇到的问题。
 
-Thu Aug 13 02:09:01 CST 2020 
+**Thu Aug 13 02:09:01 CST 2020**
 Q 交代一下开发环境和编译的目标版本
 OS macOS Catalina v10.15.5
 Goland 编译TiDB PD
@@ -11,7 +11,7 @@ tidb release-v4.0.4
 tikv release-v4.0
 pd   release v4.0
 
-Thu Aug 13 02:12:17 CST 2020 
+**hu Aug 13 02:12:17 CST 2020**
 Q 直接寻找可重现的文档
 网上可以找到可以tidb编译的相关资料
 TiDB - 如何在国内编译 
@@ -21,7 +21,7 @@ https://docs.pingcap.com/zh/search/?lang=zh&type=tidb&version=v4.0&q=%E7%BC%96%E
 如何在没有代理的情况下编译 tidb server
 https://www.cnblogs.com/lijingshanxi/p/10890232.html
 
-Thu Aug 13 02:12:50 CST 2020
+**Thu Aug 13 02:12:50 CST 2020**
 Q 尝试下载代码
 ```
 $ du -sh tidb-4.0.4
@@ -29,14 +29,14 @@ $ du -sh tidb-4.0.4
 ```
 代码大小25M 
 
-Thu Aug 13 02:24:49 CST 2020
+**Thu Aug 13 02:24:49 CST 2020**
 Q goland plugins 
 GoYacc 用来格式化yacc文件
 IdeaVim 官方Vim
 Makefile support
 WakaTime 统计编程时间
 
-Thu Aug 13 02:28:04 CST 2020
+**Thu Aug 13 02:28:04 CST 2020**
 Q 如何编译
 因为不知道goland的ToolsChain
 这里去看看github的ReadME和wiki有没有什么说法
@@ -59,7 +59,7 @@ go: finding google.golang.org/api v0.7.0
 ```
 所以需要代理不然有些依赖可能获取不到。  
 
-Thu Aug 13 02:52:32 CST 2020
+**Thu Aug 13 02:52:32 CST 2020**
 Q 在这个地方卡住了
 ```
 go: github.com/pingcap/tidb@v1.1.0-beta.0.20200715100003-b4da443a3c4c: git fetch -f origin refs/heads/*:refs/heads/* refs/tags/*:refs/tags/* in /Users/conor/go/pkg/mod/cache/vcs/023ec28de881fe16123b69e600d28e8671b1fa6b70863a0d65ca08ea4bcc7d6d: exit status 128:
@@ -83,7 +83,7 @@ fatal: not in a git directory
 这里比较尴尬，我用的源码不是从指定的commit上clone下来的，
 那无git的源码就不能直接make了吗。
 
-Thu Aug 13 03:00:18 CST 2020
+**Thu Aug 13 03:00:18 CST 2020**
 Q 删除源码使用git的
 https://github.com/pingcap/tidb/tree/release-4.0.4
 ```
@@ -102,7 +102,7 @@ make
 在Pycharm/Perference/搜索Proxy
 配饰manual_paoxy
 
-Thu Aug 13 03:21:17 CST 2020
+**Thu Aug 13 03:21:17 CST 2020**
 Q 编译pd
 ```
 git clone https://github.com/pingcap/pd.git
@@ -112,7 +112,7 @@ make
 ```
 成功
 
-Thu Aug 13 03:26:19 CST 2020
+**Thu Aug 13 03:26:19 CST 2020**
 Q 编译tikv
 tikv是rust的 要上clion
 ```
@@ -121,7 +121,7 @@ info: component 'rustfmt' for target 'x86_64-apple-darwin' is up to date
 在macos下不知道能不能正常编译
 
 
-Thu Aug 13 03:43:09 CST 2020
+**Thu Aug 13 03:43:09 CST 2020**
 Q warning
 ```rust
 warning: variable does not need to be mutable
@@ -142,23 +142,23 @@ warning: variable does not need to be mutable
         let mut send_fp = || {
 ```
 
-Thu Aug 13 03:53:46 CST 2020
+**Thu Aug 13 03:53:46 CST 2020**
 Q 编译成功
 不过我用的 all 参数这里在进行测试
 
-Thu Aug 13 03:54:25 CST 2020
+**Thu Aug 13 03:54:25 CST 2020**
 Q pd是做什么的
 >PD是Placement Driver的缩写。它用于管理和调度TiKV集群。 PD通过嵌入etcd支持分布和容错。
 
-Thu Aug 13 04:15:36 CST 2020
+**Thu Aug 13 04:15:36 CST 2020**
 Q 测试不通过
 有很多测试 没有通过。不过目标是“启动事物事务log写一段”
 先尝试搭建集群
 
-Thu Aug 13 04:23:18 CST 2020
+**Thu Aug 13 04:23:18 CST 2020**
 Q 如何run起来服务，如何构建集群
 
-Thu Aug 13 11:34:44 CST 2020
+**Thu Aug 13 11:34:44 CST 2020**
 Q 怎么算自己搭建
 可以使用官方的几个工具嘛。
 然后发现了这个
@@ -196,7 +196,7 @@ Flags:
 ```
 
 
-Thu Aug 13 12:51:16 CST 2020
+**Thu Aug 13 12:51:16 CST 2020**
 Q 安装tiup
 官方github
 https://github.com/pingcap/tiup
@@ -207,7 +207,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh
 source或者重启一个termianl
 
 
-Thu Aug 13 13:01:05 CST 2020
+**Thu Aug 13 13:01:05 CST 2020**
 Q 已经配置了路径但是执行命令的时候 应该是没有找到二进制文件的意思
 ```
 The component `tidb` is not installed; downloading from repository.
@@ -256,22 +256,22 @@ To view the Grafana: http://127.0.0.1:3000
 不过目的应该是能够对上面3个工具进行编译开发，相比这里应该没有问题。
 其实官方这里推荐的也是试用 Cluster Platground 和 Ansible是三种部署方式
 
-Thu Aug 13 13:18:49 CST 2020
+**Thu Aug 13 13:18:49 CST 2020**
 Q这里默认的dashboard用户密码是什么， 
 emmm 直接signin就可以了
 ps dashboard的账号是root密码空 Grafana的账号admin密码admin
 
-Thu Aug 13 13:20:14 CST 2020
+**Thu Aug 13 13:20:14 CST 2020**
 Q 左侧cluster info 可以查看集群节点信息，
 看Deployment Directory应该是没有问题 
 TiFlash挂了 先继续有问题再来启动，再不行就也编译一个本地的
 
-Thu Aug 13 13:22:54 CST 2020
+**Thu Aug 13 13:22:54 CST 2020**
 Q 尝试链接
 mysql --host 127.0.0.1 --port 4000 -u root
 这里用的是JB家的DataGrip
 
-Thu Aug 13 13:29:48 CST 2020
+**Thu Aug 13 13:29:48 CST 2020**
 Q 尝试查询 创建表 创建事务
 
 
@@ -298,12 +298,11 @@ tidemo> CREATE TABLE IF NOT EXISTS tbl(
 [2020-08-13 13:37:37] completed in 133 ms
 ```
 
-Thu Aug 13 14:11:45 CST 2020
+**Thu Aug 13 14:11:45 CST 2020**
 Q 看看资料 修改哪里可以在想要的位置出发打印消息
 
 
-
-Sun Aug 16 10:59:10 CST 2020
+**Sun Aug 16 10:59:10 CST 2020**
 Q 事务的起点在哪里
 全局搜索transaction并且限定*.go文件
 可以找到方法
@@ -354,8 +353,8 @@ type Transaction interface {
 里面有常见的`SetVars`,`commit`,`rollback` ，那么begin哪里去了。
 
 
-Sun Aug 16 11:02:59 CST 2020
-Q 事物的Begin方法在哪里。
+_Sun Aug 16 11:02:59 CST 2020_
+**Q 事物的Begin方法在哪里。**
 全局搜索Begin() MatchCase *.go
 ```
 // Storage defines the interface for storage.
@@ -392,8 +391,8 @@ Ok, 这个叫Stage中有一个可以返回Transaction的Begin(), 这里居然是
 原因我也不知道。
 
 
-Sun Aug 16 11:10:48 CST 2020
-Q 加入需要输出的“hello transaction”
+_Sun Aug 16 11:10:48 CST 2020_
+**Q 加入需要输出的“hello transaction”**
 ```
 #file kv/txn.go 		
 txn, err = store.Begin()
