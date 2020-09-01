@@ -1,4 +1,4 @@
-##题目描述
+##题目描述    
 分值： 1个有效issues，有效pr根据实际效果进行加分，比如能节省CPU，减少内存占用，减少IO次数等等。
 使用上一节可以讲的 sysbench、go-ycsb 或者 go-tpc 对 TiDB 进行压力测试，然后对 TiDB 或 TiKV 的 CPU 、内存或 IO 进行 profile，寻找潜在可以优化的地方并提 enhance 类型的 issue 描述。
 
@@ -14,14 +14,14 @@ issue 描述应包含：
 ##tidb issues
 https://github.com/pingcap/tidb/issues/19686
 
-##部署环境 
-aliyunECS * 5 
-机器配置
+##部署环境     
+aliyunECS * 5     
+机器配置    
 |instance	|vCPU|	mem（GiB）	|local(GiB)|	网络带宽能力(O/I)(Gbit/s)	|网络收发包能力(O+I)(万PPS)|IPv6|连接数(万)|多队列|弹性网卡(包括一块主网卡)|单块弹性网卡的私有IP	|云盘IOPS(万)	|云盘带宽(Gbit/s)|云盘类型|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
 |ecs.c6e.xlarge|	4|	8.0	|无	|突发最高10.0|	100|	support|	max25|	4|	4|	15|	4.0|	1.5|ESSD云盘PL0 40GiB (2280 IOPS)|
 
-##拓扑结构
+##拓扑结构    
 **DB+DB+(KV+PD)+(KV+PD)+(DeployNode+Monitor)**
 ```
 global:
@@ -128,10 +128,10 @@ db-driver=mysql
 ```
 db=8 records=1000000
 prepare
-![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/5F211CDD464100348A33EBD25C2E7E44.jpg)
+![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/5F211CDD464100348A33EBD25C2E7E44.jpg)
 run阶段 
-![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/09B745DF57C1829CFE068B7FA1DB9AC0.jpg)
-![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/045668831F7A242F1797EB83D47424AB.jpg)
+![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/09B745DF57C1829CFE068B7FA1DB9AC0.jpg)
+![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/045668831F7A242F1797EB83D47424AB.jpg)
 cpu使用和memory和qps也都集中在kv-node-1上
 
 ```
@@ -149,7 +149,7 @@ db-driver=mysql
 percentile=99
 ```
 db=32 records=1000000 
-![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/CD04CA0797C0FFA2B479E63F8F43221C.jpg)
+![IMAGE](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/CD04CA0797C0FFA2B479E63F8F43221C.jpg)
 
 ```
 SQL statistics:
@@ -252,10 +252,10 @@ sudo sh mem.sh $tikv-pid
 ```
 
 debug.zip和dashboard导出获得的火焰图和调用图
-[profiling_6_19_tikv_172_27_133_128_20160164743229.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/D4B209A5ABE4D23FAD23A7131387BD78.svg)
-[profiling_6_20_tikv_172_27_133_130_20160294708344.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/30A528A7F1AA4F31D49AD91A6C39A570.svg)
-[profiling_7_22_tidb_172_27_133_129_4000044554540.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/DE17C85BF2FEF1025759DE1291170E90.svg)
-[profiling_7_21_tidb_172_27_133_127_4000333331611.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week2/resources/29D7729DD734FB3B9D396385D4020FBF.svg)
+[profiling_6_19_tikv_172_27_133_128_20160164743229.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/D4B209A5ABE4D23FAD23A7131387BD78.svg)
+[profiling_6_20_tikv_172_27_133_130_20160294708344.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/30A528A7F1AA4F31D49AD91A6C39A570.svg)
+[profiling_7_22_tidb_172_27_133_129_4000044554540.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/DE17C85BF2FEF1025759DE1291170E90.svg)
+[profiling_7_21_tidb_172_27_133_127_4000333331611.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/29D7729DD734FB3B9D396385D4020FBF.svg)
 
 
 尝试进行扩容多个tikv进行测试，不过aliyun线路出现了问题，目前不能添加ECS。
