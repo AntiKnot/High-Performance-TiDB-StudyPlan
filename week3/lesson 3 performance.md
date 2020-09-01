@@ -1,4 +1,4 @@
-##题目描述    
+## 题目描述    
 分值： 1个有效issues，有效pr根据实际效果进行加分，比如能节省CPU，减少内存占用，减少IO次数等等。
 使用上一节可以讲的 sysbench、go-ycsb 或者 go-tpc 对 TiDB 进行压力测试，然后对 TiDB 或 TiKV 的 CPU 、内存或 IO 进行 profile，寻找潜在可以优化的地方并提 enhance 类型的 issue 描述。
 
@@ -11,17 +11,17 @@ issue 描述应包含：
 【可选】提 PR 进行优化：按照 PR 模板提交优化 PR
 输出：对 TiDB 或 TiKV 进行 profile，写文章描述分析的过程，对于可以优化的地方提 issue 描述，并将 issue 贴到文章中（或【可选】提 PR 进行优化，将 PR 贴到文章中）
 
-##tidb issues
+## tidb issues
 https://github.com/pingcap/tidb/issues/19686
 
-##部署环境     
+## 部署环境     
 aliyunECS * 5     
 机器配置    
 |instance	|vCPU|	mem（GiB）	|local(GiB)|	网络带宽能力(O/I)(Gbit/s)	|网络收发包能力(O+I)(万PPS)|IPv6|连接数(万)|多队列|弹性网卡(包括一块主网卡)|单块弹性网卡的私有IP	|云盘IOPS(万)	|云盘带宽(Gbit/s)|云盘类型|
 |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
 |ecs.c6e.xlarge|	4|	8.0	|无	|突发最高10.0|	100|	support|	max25|	4|	4|	15|	4.0|	1.5|ESSD云盘PL0 40GiB (2280 IOPS)|
 
-##拓扑结构    
+## 拓扑结构    
 **DB+DB+(KV+PD)+(KV+PD)+(DeployNode+Monitor)**
 ```
 global:
