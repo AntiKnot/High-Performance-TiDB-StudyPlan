@@ -252,10 +252,10 @@ sudo sh mem.sh $tikv-pid
 ```
 
 debug.zip和dashboard导出获得的火焰图和调用图
-[profiling_6_19_tikv_172_27_133_128_20160164743229.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/D4B209A5ABE4D23FAD23A7131387BD78.svg)
-[profiling_6_20_tikv_172_27_133_130_20160294708344.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/30A528A7F1AA4F31D49AD91A6C39A570.svg)
-[profiling_7_22_tidb_172_27_133_129_4000044554540.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/DE17C85BF2FEF1025759DE1291170E90.svg)
-[profiling_7_21_tidb_172_27_133_127_4000333331611.svg](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/29D7729DD734FB3B9D396385D4020FBF.svg)
+![image](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/D4B209A5ABE4D23FAD23A7131387BD78.svg)
+![image](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/30A528A7F1AA4F31D49AD91A6C39A570.svg)
+![image](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/DE17C85BF2FEF1025759DE1291170E90.svg)
+![image](https://github.com/SailerNote/High-Performance-TiDB-StudyPlan/blob/master/week3/resources/29D7729DD734FB3B9D396385D4020FBF.svg)
 
 
 尝试进行扩容多个tikv进行测试，不过aliyun线路出现了问题，目前不能添加ECS。
